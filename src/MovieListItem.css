@@ -1,0 +1,23 @@
+.movieCard {
+    display: flex;
+    flex-direction: column;
+
+    .movieInfo {
+        display: flex;
+        flex-direction: row;
+
+        .movieImage {
+            display: flex;
+            flex-direction: column
+        }
+
+        .movieNameDescription {
+            display: flex;
+            flex-direction: column
+        }
+    }
+    .movieShowtimes{
+        display: flex;
+        flex-direction: row;
+    }
+}

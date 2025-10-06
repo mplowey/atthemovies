@@ -1,0 +1,15 @@
+.showingTimesContainer {
+    border: 1px solid black;
+
+    .showingTimesDayPicker{
+        display: flex;
+        flex-direction: row;
+        background-color: grey;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            padding: 5px 10px;
+        }
+    }
+}

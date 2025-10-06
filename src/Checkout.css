@@ -1,0 +1,15 @@
+.checkoutContainer {
+    .priceTable {
+        border: 1px solid black;
+
+        .header {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .priceRow {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}
