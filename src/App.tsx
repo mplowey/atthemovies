@@ -4,6 +4,7 @@ import FilmDetails from './FilmDetails'
 import { PickSeats } from './PickSeats';
 import Checkout from './Checkout';
 import Ticket from './Ticket';
+import NavBar from './NavBar';
 import './App.css';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     <>
       <header>
         <nav>
-
+          <NavBar />
         </nav>
       </header>
       <main>
@@ -28,7 +29,7 @@ function App() {
     imdb_id={''}
     vote_average={1}
     vote_count={1}/>
-        <ShowingTimes filmId="1" selectedDay="Mon"/>
+        <ShowingTimes filmId="1" selectedDate="Mon"/>
         <PickSeats />
         <Checkout />
         <Ticket />

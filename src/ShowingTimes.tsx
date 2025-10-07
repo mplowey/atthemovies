@@ -1,18 +1,32 @@
 import './ShowingTimes.css';
-import MovieListItem from './MovieListItem';
+import FilmListItem from './FilmListItem';
+import type { Film } from './Models/Film';
 interface ShowingTimesProps {
     filmId: string;
-    selectedDay: string;
+    selectedDate: string;
 }
 
-const ShowingTimes = ({filmId, selectedDay}: ShowingTimesProps) => {
-    
+const ShowingTimes = ({filmId, selectedDate}: ShowingTimesProps) => {  
+    const film: Film = {
+        id: 1,
+        title: 'Chunnel',
+        poster_path: '',
+        runtime: 147,
+        tagline: 'There\'s a war 100 meters below the English Channel.',
+        homepage: '',
+        release_date: '',
+        overview: '',
+        popularity: 0,
+        imdb_id: '',
+        vote_average: 0,
+        vote_count: 0
+    };
     return (
         <>
             <div className="showingTimesContainer">
                 <div className="showingTimesDay">
                     <header>
-                        <h1>Showings for {selectedDay}</h1>
+                        <h1>Showings for {selectedDate}</h1>
                     </header>
                 </div>
                 <div className="showingTimesDayPicker">
@@ -26,11 +40,12 @@ const ShowingTimes = ({filmId, selectedDay}: ShowingTimesProps) => {
                 </div>
             </div>
 
-            <div className='movieList'>
-                <MovieListItem id={1} tagline={'There\'s a war 100 meters below the English Channel.'} title={'Chunnel'} poster_path={''} runtime={147} showtimes={['12:00', '15:00', '18:00']}  />
-                <MovieListItem id={2} tagline={'Movie 2'} title={'Second Movie'} poster_path={''} runtime={143} showtimes={['12:00', '15:00', '18:00']}  />
-                <MovieListItem id={3} tagline={'Movie 3'} title={'Third Movie'} poster_path={''} runtime={143} showtimes={['12:00', '15:00', '18:00']} />
-                <MovieListItem id={4} tagline={'Movie 4'} title={'Fourth Movie'} poster_path={''} runtime={143} showtimes={['12:00', '15:00', '18:00']}  />
+            <div className='filmList'>
+                <FilmListItem film={film} showings={[]} />
+                <FilmListItem film={film} showings={[]} />
+                <FilmListItem film={film} showings={[]} />
+                <FilmListItem film={film} showings={[]} />
+                <FilmListItem  film={film} showings={[]} />
             </div>
 </>
     );

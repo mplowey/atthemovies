@@ -1,0 +1,12 @@
+
+.navBarContainer {
+    display: flex !important;
+    flex-direction: row;
+    background-color: blue;
+
+    div.navBarItem {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 10px;
+    }
+}

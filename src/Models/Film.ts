@@ -1,4 +1,4 @@
-export interface Movie {
+export type Film = {
     id: number,
     title: string,
     homepage: string,
@@ -11,4 +11,4 @@ export interface Movie {
     imdb_id: string,
     vote_average: number,
     vote_count: number
-}
+};

@@ -1,8 +1,8 @@
-import type { Movie } from './Models/Movie';
+import type { Film } from './Models/Film';
 
 import './FilmDetails.css'
 
-const FilmDetails = (props: Movie) => {
+const FilmDetails = (props: Film) => {
   return (
     <div className="filmDetailsContainer">
         <div className="movieImage">
