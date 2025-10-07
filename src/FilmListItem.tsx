@@ -8,7 +8,7 @@ const FilmListItem = (props: {film: Film, showings: Showing[]}) => {
             <div className="movieCard">
                 <div className="movieInfo">
                     <div className="movieImage">
-                        <img src={props.film.poster_path}></img>
+                        <img src={`http://localhost:3008/${props.film.poster_path}`}></img>
                     </div>
                     <div className="movieNameDescription">
                         <div className="movieName">{props.film.title}</div>
@@ -19,8 +19,9 @@ const FilmListItem = (props: {film: Film, showings: Showing[]}) => {
                     <div className="ShowingTimesHeader">Showing times for #</div>
                     <div className="showTimes">
                         {props.showings.map(showing => {
-                            return <div className="showTime">{showing.showing_time}</div>
-                        })}[]
+                            const time = new Date(showing.showing_time);
+                            return <div className="showTime">{time.getHours()}:{time.getMinutes()}</div>
+                        })}
                     </div>
                 </div>
             </div>

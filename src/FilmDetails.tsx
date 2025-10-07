@@ -6,7 +6,7 @@ const FilmDetails = (props: Film) => {
   return (
     <div className="filmDetailsContainer">
         <div className="movieImage">
-            <img src={props.poster_path} alt="Movie Poster" />
+            <img src={props && props.poster_path ? `http://localhost:3008/${props.poster_path}` : '#'} alt="Movie Poster" />
         </div>
         <div className="movieInfo">
             <div className="title">

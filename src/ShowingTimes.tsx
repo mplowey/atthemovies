@@ -1,26 +1,42 @@
 import './ShowingTimes.css';
+import { type Film } from './Models/Film';
+import { type Showing } from './Models/Showing';
 import FilmListItem from './FilmListItem';
-import type { Film } from './Models/Film';
+import useFilmStore from './Stores/FilmStore';
+import { useEffect, useState } from 'react';
+import { getAsync } from './Services/ApiService';
+
 interface ShowingTimesProps {
     filmId: string;
     selectedDate: string;
+   // films: Film[];
 }
 
 const ShowingTimes = ({filmId, selectedDate}: ShowingTimesProps) => {  
-    const film: Film = {
-        id: 1,
-        title: 'Chunnel',
-        poster_path: '',
-        runtime: 147,
-        tagline: 'There\'s a war 100 meters below the English Channel.',
-        homepage: '',
-        release_date: '',
-        overview: '',
-        popularity: 0,
-        imdb_id: '',
-        vote_average: 0,
-        vote_count: 0
-    };
+
+    const [showings, setShowings] = useState<Showing[]>([])
+
+    useEffect(() => {
+        getAsync<Showing[]>('http://localhost:3008/showings').then((res:Showing[]) => {
+        setShowings(res);
+        });
+    }, [])
+
+    const films = useFilmStore((state: any) => state.films)
+
+    const dispalyShowTimes = () => {
+        const today = new Date();
+        if(films && films.length){
+            return films.map((film:Film) => {
+                    const shows = showings.filter((showing:Showing) => {
+                        return showing.film_id === film.id && today.getDay() === new Date(showing.showing_time).getDay();
+                    });
+                    return (<FilmListItem key={film.id} film={film} showings={shows} />);
+        })
+        }
+        return (<div>Loading...</div>)
+    }
+
     return (
         <>
             <div className="showingTimesContainer">
@@ -41,11 +57,12 @@ const ShowingTimes = ({filmId, selectedDate}: ShowingTimesProps) => {
             </div>
 
             <div className='filmList'>
+                { dispalyShowTimes()}
+                {/* <FilmListItem film={film} showings={[]} />
                 <FilmListItem film={film} showings={[]} />
                 <FilmListItem film={film} showings={[]} />
                 <FilmListItem film={film} showings={[]} />
-                <FilmListItem film={film} showings={[]} />
-                <FilmListItem  film={film} showings={[]} />
+                <FilmListItem  film={film} showings={[]} /> */}
             </div>
 </>
     );
