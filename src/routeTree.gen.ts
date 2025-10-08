@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/Register'
 import { Route as CheckoutRouteImport } from './routes/Checkout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PickSeatsShowingIdRouteImport } from './routes/pick-seats.$showingId'
 import { Route as FilmsIdRouteImport } from './routes/films.$id'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/Register',
+  path: '/Register',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CheckoutRoute = CheckoutRouteImport.update({
   id: '/Checkout',
   path: '/Checkout',
@@ -38,12 +44,14 @@ const FilmsIdRoute = FilmsIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/Checkout': typeof CheckoutRoute
+  '/Register': typeof RegisterRoute
   '/films/$id': typeof FilmsIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/Checkout': typeof CheckoutRoute
+  '/Register': typeof RegisterRoute
   '/films/$id': typeof FilmsIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
@@ -51,26 +59,46 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/Checkout': typeof CheckoutRoute
+  '/Register': typeof RegisterRoute
   '/films/$id': typeof FilmsIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/Checkout' | '/films/$id' | '/pick-seats/$showingId'
+  fullPaths:
+    | '/'
+    | '/Checkout'
+    | '/Register'
+    | '/films/$id'
+    | '/pick-seats/$showingId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/Checkout' | '/films/$id' | '/pick-seats/$showingId'
-  id: '__root__' | '/' | '/Checkout' | '/films/$id' | '/pick-seats/$showingId'
+  to: '/' | '/Checkout' | '/Register' | '/films/$id' | '/pick-seats/$showingId'
+  id:
+    | '__root__'
+    | '/'
+    | '/Checkout'
+    | '/Register'
+    | '/films/$id'
+    | '/pick-seats/$showingId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CheckoutRoute: typeof CheckoutRoute
+  RegisterRoute: typeof RegisterRoute
   FilmsIdRoute: typeof FilmsIdRoute
   PickSeatsShowingIdRoute: typeof PickSeatsShowingIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/Register': {
+      id: '/Register'
+      path: '/Register'
+      fullPath: '/Register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/Checkout': {
       id: '/Checkout'
       path: '/Checkout'
@@ -105,6 +133,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CheckoutRoute: CheckoutRoute,
+  RegisterRoute: RegisterRoute,
   FilmsIdRoute: FilmsIdRoute,
   PickSeatsShowingIdRoute: PickSeatsShowingIdRoute,
 }
