@@ -9,8 +9,11 @@
         .movieImage {
             display: flex;
             flex-direction: column;
-            height: 300px;
-            width: 200px;
+
+            img {
+                height: 300px;
+                width: 200px;
+            }
         }
 
         .movieNameDescription {
