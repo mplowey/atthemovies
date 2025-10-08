@@ -18,9 +18,9 @@ const FilmListItem = (props: {film: Film, showings: Showing[]}) => {
                 <div className="movieShowtimes">
                     <div className="ShowingTimesHeader">Showing times for #</div>
                     <div className="showTimes">
-                        {props.showings.map(showing => {
+                        {props.showings.map((showing, i) => {
                             const time = new Date(showing.showing_time);
-                            return <div className="showTime">{time.getHours()}:{time.getMinutes()}</div>
+                            return <div key={i} className="showTime">{time.getHours()}:{time.getMinutes()}</div>
                         })}
                     </div>
                 </div>

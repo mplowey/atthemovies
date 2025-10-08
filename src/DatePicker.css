@@ -1,0 +1,25 @@
+.datePicker {
+    display: flex;
+    gap: 10px;
+
+    
+
+    .dayButton {
+        padding: 8px 16px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        &.selected {
+            background-color: #007bff;
+            color: white;
+            &:hover {
+                background-color: #f0f0f0;
+            }
+        }
+    }
+}
+
+.dayButton.selected:hover {
+    background-color: #0056b3;
+}

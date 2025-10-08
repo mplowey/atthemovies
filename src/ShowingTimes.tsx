@@ -5,6 +5,8 @@ import FilmListItem from './FilmListItem';
 import useFilmStore from './Stores/FilmStore';
 import { useEffect, useState } from 'react';
 import { getAsync } from './Services/ApiService';
+import DatePicker from './DatePicker';
+import useDateStore from './Stores/DateStore'
 
 interface ShowingTimesProps {
     filmId: string;
@@ -12,9 +14,10 @@ interface ShowingTimesProps {
    // films: Film[];
 }
 
-const ShowingTimes = ({filmId, selectedDate}: ShowingTimesProps) => {  
-
+const ShowingTimes = ({filmId}: ShowingTimesProps) => {  
+    //const [selectedDay, setSelectedDay] = useState(selectedDate);
     const [showings, setShowings] = useState<Showing[]>([])
+    const selectedDate = useDateStore((s:any) => s.selectedDate)
 
     useEffect(() => {
         getAsync<Showing[]>('http://localhost:3008/showings').then((res:Showing[]) => {
@@ -24,12 +27,12 @@ const ShowingTimes = ({filmId, selectedDate}: ShowingTimesProps) => {
 
     const films = useFilmStore((state: any) => state.films)
 
-    const dispalyShowTimes = () => {
-        const today = new Date();
+    const displayShowTimes = () => {
+        
         if(films && films.length){
             return films.map((film:Film) => {
                     const shows = showings.filter((showing:Showing) => {
-                        return showing.film_id === film.id && today.getDay() === new Date(showing.showing_time).getDay();
+                        return showing.film_id === film.id && new Date(selectedDate).getDay() === new Date(showing.showing_time).getDay();
                     });
                     return (<FilmListItem key={film.id} film={film} showings={shows} />);
         })
@@ -45,19 +48,11 @@ const ShowingTimes = ({filmId, selectedDate}: ShowingTimesProps) => {
                         <h1>Showings for {selectedDate}</h1>
                     </header>
                 </div>
-                <div className="showingTimesDayPicker">
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div>Sat</div>
-                    <div>Sun</div>
-                </div>
+                <DatePicker />
             </div>
 
             <div className='filmList'>
-                { dispalyShowTimes()}
+                { displayShowTimes()}
                 {/* <FilmListItem film={film} showings={[]} />
                 <FilmListItem film={film} showings={[]} />
                 <FilmListItem film={film} showings={[]} />
