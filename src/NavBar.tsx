@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import './NavBar.css'
 
 const NavBar = () => {
@@ -5,7 +6,7 @@ const NavBar = () => {
         <div className="navBarContainer">
             <div className="navBarItem">Dinner and a Movie</div>
             <div className="navBarItem">Login</div>
-            <div className="navBarItem">Register</div>
+            <Link to="/Register" className="navBarItem">Register</Link>
         </div>
     );
 };
