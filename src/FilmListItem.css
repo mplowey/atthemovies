@@ -1,40 +1,58 @@
 .movieCard {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+  box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.5);
+
+  .movieInfo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
-    .movieInfo {
+    .movieImage {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        height: 300px;
+        width: 200px;
+      }
+    }
+
+    .movieNameDescription {
+      display: flex;
+      flex-direction: column;
+      .movieName {
+        text-transform: uppercase;
+      }
+    }
+  }
+  .movieShowtimes {
+    display: flex;
+    flex-direction: row;
+
+    .showTimesCol {
+      display: flex;
+      flex-direction: column;
+
+      .ShowingTimesHeader {
         display: flex;
         flex-direction: row;
+      }
 
-        .movieImage {
-            display: flex;
-            flex-direction: column;
-
-            img {
-                height: 300px;
-                width: 200px;
-            }
-        }
-
-        .movieNameDescription {
-            display: flex;
-            flex-direction: column
-        }
-    }
-    .movieShowtimes{
+      .showTimes {
         display: flex;
         flex-direction: row;
-
-        .showTimes {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            .showTime{
-                display: flex;
-                flex-direction: column;
-                padding: 5px 10px;
-            }
+        flex-wrap: wrap;
+        gap: 10px;
+        .showTime {
+          display: flex;
+          flex-direction: column;
+          padding: 5px 10px;
+          background-color: lightgrey;
+          color: black;
         }
-
+      }
     }
+  }
 }

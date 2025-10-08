@@ -1,4 +1,4 @@
-const getAsync = async (url: string): Promise<Response> => {
+const getAsync = async <T>(url: string): Promise<T> => {
   const response = await fetch(url, {
     method: "GET",
   });

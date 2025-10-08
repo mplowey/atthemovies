@@ -1,15 +1,26 @@
 .showingTimesContainer {
-    border: 1px solid black;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    .showingTimesDayPicker{
-        display: flex;
-        flex-direction: row;
-        background-color: grey;
+  .showingTimesDayPicker {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
-        div {
-            display: flex;
-            flex-direction: column;
-            padding: 5px 10px;
-        }
+    div {
+      display: flex;
+      flex-direction: column;
+      padding: 5px 10px;
     }
+  }
+}
+
+.filmList {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
 }
