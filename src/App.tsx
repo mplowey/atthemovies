@@ -1,22 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ShowingTimes from './ShowingTimes'
-import FilmDetails from './FilmDetails'
+import FilmDetails from './routes/films.$id'
 import { PickSeats } from './PickSeats';
 import Checkout from './Checkout';
 import Ticket from './Ticket';
 import NavBar from './NavBar';
+import { getAsync } from './Services/ApiService'
+import { type Film } from './Models/Film'
+import useFilmStore from './Stores/FilmStore'
+
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0)
 
+
   return (
     <>
-      <header>
-        <nav>
-          <NavBar />
-        </nav>
-      </header>
+      
       <main>
         <FilmDetails id={1} title={'Chunnel'}
     homepage={''}
@@ -29,14 +30,11 @@ function App() {
     imdb_id={''}
     vote_average={1}
     vote_count={1}/>
-        <ShowingTimes filmId="1" selectedDate="Mon"/>
+        
         <PickSeats />
         <Checkout />
         <Ticket />
       </main>
-      <footer>
-        <p>Copyright Isaac and Marc &copy; 2025</p>
-      </footer>
     </>
   )
 }

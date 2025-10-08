@@ -1,6 +1,11 @@
+import { createFileRoute } from '@tanstack/react-router';
 import './Checkout.css'
 
-const Checkout = () => {
+export const Route = createFileRoute('/Checkout')({
+  component: Checkout,
+})
+
+function Checkout() {
     return (
         <div className="checkoutContainer">
             <p>Here's the stuff in your cart</p>
@@ -22,5 +27,3 @@ const Checkout = () => {
         </div>
     );
 }
-
-export default Checkout

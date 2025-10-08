@@ -8,7 +8,12 @@
 
         .movieImage {
             display: flex;
-            flex-direction: column
+            flex-direction: column;
+
+            img {
+                height: 300px;
+                width: 200px;
+            }
         }
 
         .movieNameDescription {
@@ -19,5 +24,17 @@
     .movieShowtimes{
         display: flex;
         flex-direction: row;
+
+        .showTimes {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .showTime{
+                display: flex;
+                flex-direction: column;
+                padding: 5px 10px;
+            }
+        }
+
     }
 }
