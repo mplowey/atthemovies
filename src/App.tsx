@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import ShowingTimes from './ShowingTimes'
 import FilmDetails from './routes/films.$id'
-import { PickSeats } from './PickSeats';
-import Checkout from './Checkout';
+import { PickSeats } from './routes/pick-seats.$showingId';
+import Checkout from './routes/Checkout';
 import Ticket from './Ticket';
 import NavBar from './NavBar';
 import { getAsync } from './Services/ApiService'
