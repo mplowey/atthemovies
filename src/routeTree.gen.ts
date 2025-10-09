@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegisterRouteImport } from './routes/Register'
+import { Route as LoginRouteImport } from './routes/Login'
 import { Route as CheckoutRouteImport } from './routes/Checkout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PickSeatsShowingIdRouteImport } from './routes/pick-seats.$showingId'
@@ -18,6 +19,11 @@ import { Route as FilmsIdRouteImport } from './routes/films.$id'
 const RegisterRoute = RegisterRouteImport.update({
   id: '/Register',
   path: '/Register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/Login',
+  path: '/Login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -44,6 +50,7 @@ const FilmsIdRoute = FilmsIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/Checkout': typeof CheckoutRoute
+  '/Login': typeof LoginRoute
   '/Register': typeof RegisterRoute
   '/films/$id': typeof FilmsIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/Checkout': typeof CheckoutRoute
+  '/Login': typeof LoginRoute
   '/Register': typeof RegisterRoute
   '/films/$id': typeof FilmsIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/Checkout': typeof CheckoutRoute
+  '/Login': typeof LoginRoute
   '/Register': typeof RegisterRoute
   '/films/$id': typeof FilmsIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
@@ -68,15 +77,23 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/Checkout'
+    | '/Login'
     | '/Register'
     | '/films/$id'
     | '/pick-seats/$showingId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/Checkout' | '/Register' | '/films/$id' | '/pick-seats/$showingId'
+  to:
+    | '/'
+    | '/Checkout'
+    | '/Login'
+    | '/Register'
+    | '/films/$id'
+    | '/pick-seats/$showingId'
   id:
     | '__root__'
     | '/'
     | '/Checkout'
+    | '/Login'
     | '/Register'
     | '/films/$id'
     | '/pick-seats/$showingId'
@@ -85,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CheckoutRoute: typeof CheckoutRoute
+  LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   FilmsIdRoute: typeof FilmsIdRoute
   PickSeatsShowingIdRoute: typeof PickSeatsShowingIdRoute
@@ -97,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/Register'
       fullPath: '/Register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/Login': {
+      id: '/Login'
+      path: '/Login'
+      fullPath: '/Login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/Checkout': {
@@ -133,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CheckoutRoute: CheckoutRoute,
+  LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   FilmsIdRoute: FilmsIdRoute,
   PickSeatsShowingIdRoute: PickSeatsShowingIdRoute,

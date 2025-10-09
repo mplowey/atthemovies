@@ -9,5 +9,10 @@
     flex-direction: column;
     padding: 10px 10px;
     color: white;
+
+    &.logoutBtn {
+      background: none;
+      border: none;
+    }
   }
 }
