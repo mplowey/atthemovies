@@ -2,8 +2,10 @@ import "./FilmListItem.css";
 import type { Film } from "./Models/Film";
 import type { Showing } from "./Models/Showing";
 import { Link } from "@tanstack/react-router";
+import useDateStore from "./Stores/DateStore";
 
 const FilmListItem = (props: { film: Film; showings: Showing[] }) => {
+  const selectedDate = useDateStore((s: any) => s.selectedDate);
   return (
     <>
       <div className="movieCard">
@@ -25,7 +27,14 @@ const FilmListItem = (props: { film: Film; showings: Showing[] }) => {
         <div className="movieShowtimes">
           <div className="showTimesCol">
             <div className="ShowingTimesHeader">
-              <strong>Showing times for #</strong>
+              <strong>
+                Showing times for{" "}
+                {new Date(selectedDate).toLocaleString("en-US", {
+                  weekday: "long",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </strong>
             </div>
             <div className="showTimes">
               {props.showings.map((showing, i) => {
