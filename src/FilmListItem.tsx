@@ -9,7 +9,7 @@ const FilmListItem = (props: { film: Film; showings: Showing[] }) => {
       <div className="movieCard">
         <div className="movieInfo">
           <div className="movieImage">
-            <Link to="/films/$id" params={{ id: props.film.id }}>
+            <Link to="/films/$id" params={{ id: `${props.film.id}` }}>
               <img
                 src={`http://localhost:3008/${props.film.poster_path}`}
               ></img>
@@ -34,9 +34,12 @@ const FilmListItem = (props: { film: Film; showings: Showing[] }) => {
                   <div key={i} className="showTime">
                     <Link
                       to="/pick-seats/$showingId"
-                      params={{ showingId: showing.id }}
+                      params={{ showingId: `${showing.id}` }}
                     >
-                      {time.toTimeString().split(" ")[0].substring(0, 5)}
+                      {time.toLocaleTimeString("en-US", {
+                        hour: "numeric",
+                        minute: "2-digit",
+                      })}
                     </Link>
                   </div>
                 );

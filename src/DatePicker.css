@@ -1,9 +1,12 @@
 .datePicker {
   display: flex;
+  flex-direction: row;
   gap: 10px;
   justify-content: center;
 
   .dayButton {
+    display: flex;
+    flex-direction: column;
     padding: 8px 16px;
     cursor: pointer;
     border: 1px solid #ccc;

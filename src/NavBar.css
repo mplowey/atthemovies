@@ -1,11 +1,13 @@
 .navBarContainer {
-  display: flex !important;
+  display: flex;
   flex-direction: row;
   background-color: blue;
+  width: 100%;
 
   .navBarItem {
     display: flex;
     flex-direction: column;
     padding: 10px 10px;
+    color: white;
   }
 }

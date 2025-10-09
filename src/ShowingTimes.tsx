@@ -46,18 +46,25 @@ const ShowingTimes = ({ filmId }: ShowingTimesProps) => {
   };
 
   return (
-    <>
-      <div className="showingTimesContainer">
-        <div className="showingTimesDayPicker">
+    <div className="showingTimesContainer">
+      <div className="showingTimesDayPicker">
+        <div className="showingTimesHeader">
           <header>
-            <h1>Showings for {selectedDate}</h1>
+            <h1>
+              Showings for{" "}
+              {new Date(selectedDate).toLocaleString("en-US", {
+                weekday: "long",
+                month: "long",
+                day: "numeric",
+              })}
+            </h1>
           </header>
         </div>
         <DatePicker />
       </div>
 
       <div className="filmList">{displayShowTimes()}</div>
-    </>
+    </div>
   );
 };
 

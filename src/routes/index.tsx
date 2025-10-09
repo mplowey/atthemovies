@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import ShowingTimes from "../ShowingTimes";
 import useFilmStore from "../Stores/FilmStore";
 import { useEffect } from "react";
-import { getAsync } from "../Services/ApiService";
+import { getAsync } from "../services/ApiService";
 import type { Film } from "../Models/Film";
 import useDateStore from "../Stores/DateStore";
 
@@ -16,7 +16,7 @@ function Index() {
   const selectedDate = useDateStore((s: any) => s.selectedDate);
 
   useEffect(() => {
-    setSelectedDate(new Date().toISOString().split("T")[0]);
+    setSelectedDate(new Date().toString());
   }, []);
 
   useEffect(() => {

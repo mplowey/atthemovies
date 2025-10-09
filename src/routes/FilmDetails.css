@@ -1,0 +1,37 @@
+.filmDetailsContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  gap: 20px;
+
+  .movieImage {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+
+  .movieInfo {
+    display: flex;
+    flex-direction: column;
+
+    .showTimes {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .showTime {
+        display: flex;
+        flex-direction: column;
+        padding: 5px 10px;
+        background-color: black;
+
+        a {
+          color: white;
+          text-decoration: none;
+          text-transform: lowercase;
+        }
+      }
+    }
+  }
+}
