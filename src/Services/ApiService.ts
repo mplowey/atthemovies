@@ -5,10 +5,17 @@ const getAsync = async <T>(url: string): Promise<T> => {
 
   return await response.json();
 };
-// const postASync = async (url: string, body: unknown): Promise<Response> => {
-//     const response = await fetch(url, {
-//         method: 'POST',
-//         data: JSON.stringify(body),
-//     });
+const postAsync = async <T>(url: string, body: unknown): Promise<T> => {
+  const response = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer sometoken",
+    },
+  });
 
-export { getAsync };
+  return await response.json();
+};
+
+export { getAsync, postAsync };
