@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { type Seat } from '../Models/Theater';
 import './Checkout.css'
 
@@ -11,7 +11,15 @@ export const Route = createFileRoute('/Checkout')({
 
 function Checkout() {
   const { seats } = Route.useSearch();
+  const navigate = useNavigate();
   const total = seats.reduce((sum, seat) => sum + seat.price, 0);
+
+  const handleBuy = () => {
+    navigate({ 
+      to: '/Ticket',
+      search: { seats }
+    });
+  };
     return (
         <div className="checkoutContainer">
             <h1>Checkout</h1>
@@ -37,7 +45,7 @@ function Checkout() {
             <div className="total">
                 <strong>Total: ${total.toFixed(2)}</strong>
             </div>
-            <button>Buy</button>
+            <button onClick={handleBuy}>Buy</button>
         </div>
     );
 }
